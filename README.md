@@ -1,7 +1,7 @@
 # Note Taker
 
 ## Pages and Heroku URL
-## Pages: 
+## Pages: https://lizditullio.github.io/note-taker/
 ## Heroku: https://lizditullio-note-taker.herokuapp.com/
 <br />
 
