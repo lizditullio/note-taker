@@ -41,7 +41,7 @@ Liz DiTullio
 ## Questions 
 <br />
 
-* Have any additional questions? Check out my github profile AlexPap1 at https://github.com/lizditullio/
+* Have any additional questions? Check out my github profile https://github.com/lizditullio/
 
 * And feel free to ask additional questions by reaching [my email](mailto:lizdit72296@gmail.com).
 <br />
