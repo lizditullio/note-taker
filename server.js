@@ -21,8 +21,12 @@ function writeToDatabase(data) {
 }
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+    res.sendFile(path.join(__dirname, './public', 'index.html'))
 });
+
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public', 'notes.html'));
+  });
 
 app.get('/api/notes', (req, res) => {
     const database = readDatabase();
@@ -69,7 +73,6 @@ app.delete('/api/notes:id', (req, res) => {
     writeToDatabase(newData);
     res.status(200).end
 });
-
 
 app.listen(PORT, () => {
     console.log(`listening on http://localhost:${PORT}`)
