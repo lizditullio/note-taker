@@ -45,29 +45,30 @@ app.post('/api/notes', (req, res) => {
     res.json(newNote);
 });
 
-app.put('/api/notes/:id', (req, res) => {
+app.put('/api/notes/:title', (req, res) => {
     const database = readDatabase()
 
     for (let i = 0; i < database.lenght; i++) {
         const note = database[i]
 
-        if(note.id == req.params.id) {
+        if(note.title == req.params.title) {
             //note.complete = req.body.complete 
             writeToDatabase(database);
             res.status(204).end();
         }
     }
     res.status(404).end()
-})
+});
 
-app.delete('/api/notes/:id', (req, res) => {
+app.delete('/api/notes/:title', (req, res) => {
     const database = readDatabase();
-    const newData = database.filter((note) => note.id != req.params.id);
-    if(database.lenght == newData.length) {
-        res.status(404).end;
+    const newData = database.filter((note) => note.title != req.params.title)
+    if (database.length == newData.length) {
+        res.status(404).end()
+        return;
     }
-    writeToDatabase(newData);
-    res.status(200).end
+    writeToDatabase(newData)
+    res.status(200).end();
 });
 
 app.listen(PORT, () => {
