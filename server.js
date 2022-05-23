@@ -36,7 +36,11 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
     const database = readDatabase();
 
-    const newNote = {...req.body}
+    let newNote =  {
+        title: req.body.title,
+        text: req.body.text,
+        id: crypto.randomUUID().substring(1, 10),
+      };
     
     database.push(newNote);
 
@@ -45,7 +49,7 @@ app.post('/api/notes', (req, res) => {
     res.json(newNote);
 });
 
-app.put('/api/notes/:title', (req, res) => {
+app.put('/api/notes/:id', (req, res) => {
     const database = readDatabase()
 
     for (let i = 0; i < database.lenght; i++) {
@@ -60,7 +64,7 @@ app.put('/api/notes/:title', (req, res) => {
     res.status(404).end()
 });
 
-app.delete('/api/notes/:title', (req, res) => {
+app.delete('/api/notes/:id', (req, res) => {
     const database = readDatabase();
     const newData = database.filter((note) => note.title != req.params.title)
     if (database.length == newData.length) {
