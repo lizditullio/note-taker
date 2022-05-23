@@ -41,7 +41,7 @@ app.post('/api/notes', (req, res) => {
         text: req.body.text,
         id: crypto.randomUUID().substring(1, 10),
       };
-    
+    console.log(newNote)
     database.push(newNote);
 
     writeToDatabase(database);
@@ -66,7 +66,7 @@ app.put('/api/notes/:id', (req, res) => {
 
 app.delete('/api/notes/:id', (req, res) => {
     const database = readDatabase();
-    const newData = database.filter((note) => note.title != req.params.title)
+    const newData = database.filter((note) => note.id != req.params.id)
     if (database.length == newData.length) {
         res.status(404).end()
         return;
